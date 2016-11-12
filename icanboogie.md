@@ -153,7 +153,7 @@ use ICanBoogie\HTTP\Response;
 $response = new Response('ok', 200);
 echo $response;                       // HTTP/1.0 200 OK\r\nDate: Fri, 17 May 2013 15:08:21 GMT\r\n\r\nok
 
-/* @var $app ICanBoogie\Core */
+/* @var $app ICanBoogie\Application */
 
 echo $app->models['pages']->own->visible->filter_by_nid(12)->order('created_on DESC')->limit(5);
 // SELECT * FROM `pages` `page` INNER JOIN `nodes` `node` USING(`nid`) WHERE (`constructor` = ?) AND (`is_online` = ?) AND (site_id = 0 OR site_id = ?) AND (language = "" OR language = ?) AND (`nid` = ?) ORDER BY created_on DESC LIMIT 5
@@ -173,7 +173,7 @@ prepared database statement is invoked to perform a command:
 
 # DB statements
 
-/* @var $app ICanBoogie\Core */
+/* @var $app ICanBoogie\Application */
 
 $statement = $app->models['nodes']->prepare('UPDATE {self} SET title = ? WHERE nid = ?');
 $statement("Title 1", 1);
@@ -186,7 +186,7 @@ This applies to database connections, models, requests, responses, translatorsâ€
 ```php
 <?php
 
-/* @var $app ICanBoogie\Core */
+/* @var $app ICanBoogie\Application */
 
 $pages = $app->models['pages'];
 $pages('SELECT * FROM {self_and_related} WHERE YEAR(created_on) = 2013')->all;
@@ -219,7 +219,7 @@ database, database connections, models, modules, header fieldsâ€¦
 ```php
 <?php
 
-/* @var $app ICanBoogie\Core */
+/* @var $app ICanBoogie\Application */
 
 $app->models['nodes'][123];   // fetch record with key 123 in nodes
 $app->modules['nodes'];       // obtain the Nodes module
@@ -309,9 +309,8 @@ ICanBoogie clears its configurations cache when this event is fired.
 
 ### `ICanBoogie\Prototyped::get_app`
 
-The `app` magic property of [Prototyped][] instances returns the instance of the
-application. The property is read-only and is only available after the [Core][] instance
-has been created.
+The `app` magic property of [Prototyped][] instances returns the instance of the application. The
+property is read-only and is only available after the [Application][] instance has been created.
 
 The [PrototypedBindings][] trait may be used to type hint instances.
 
@@ -351,19 +350,19 @@ $app === $o->app;
 
 [Composer]: http://getcomposer.org/
 
-[DateTime]:            http://api.icanboogie.org/datetime/2.0/class-ICanBoogie.DateTime.html
-[TimeZone]:            http://api.icanboogie.org/datetime/2.0/class-ICanBoogie.TimeZone.html
-[Request]:             http://api.icanboogie.org/http/3.0/class-ICanBoogie.HTTP.Request.html
-[BootEvent]:           http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Core.BootEvent.html
-[ClearCacheEvent]:     http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Core.ClearCacheEvent.html
-[ConfigureEvent]:      http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Core.ConfigureEvent.html
-[Core]:                http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Core.html
-[CoreNotInstantiated]: http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.CoreNotInstantiated.html
-[PrototypedBindings]:  http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Binding.PrototypedBindings.html
-[RunEvent]:            http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Core.RunEvent.html
-[TerminateEvent]:      http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Core.TerminateEvent.html
-[Prototyped]:          http://api.icanboogie.org/prototype/2.3/class-ICanBoogie.Prototyped.html
-[APCStorage]:          http://api.icanboogie.org/storage/2.0/class-ICanBoogie.Storage.APCStorage.html
-[FileStorage]:         http://api.icanboogie.org/storage/2.0/class-ICanBoogie.Storage.FileStorage.html
-[Storage]:             http://api.icanboogie.org/storage/2.0/class-ICanBoogie.Storage.Storage.html
-[StorageCollection]:   http://api.icanboogie.org/storage/2.0/class-ICanBoogie.Storage.StorageCollection.html
+[DateTime]:                   http://api.icanboogie.org/datetime/2.0/class-ICanBoogie.DateTime.html
+[TimeZone]:                   http://api.icanboogie.org/datetime/2.0/class-ICanBoogie.TimeZone.html
+[Request]:                    http://api.icanboogie.org/http/3.0/class-ICanBoogie.HTTP.Request.html
+[BootEvent]:                  http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Application.BootEvent.html
+[ClearCacheEvent]:            http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Application.ClearCacheEvent.html
+[ConfigureEvent]:             http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Application.ConfigureEvent.html
+[Application]:                http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Core.html
+[ApplicationNotInstantiated]: http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.ApplicationNotInstantiated.html
+[PrototypedBindings]:         http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Binding.PrototypedBindings.html
+[RunEvent]:                   http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Application.RunEvent.html
+[TerminateEvent]:             http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Application.TerminateEvent.html
+[Prototyped]:                 http://api.icanboogie.org/prototype/2.3/class-ICanBoogie.Prototyped.html
+[APCStorage]:                 http://api.icanboogie.org/storage/2.0/class-ICanBoogie.Storage.APCStorage.html
+[FileStorage]:                http://api.icanboogie.org/storage/2.0/class-ICanBoogie.Storage.FileStorage.html
+[Storage]:                    http://api.icanboogie.org/storage/2.0/class-ICanBoogie.Storage.Storage.html
+[StorageCollection]:          http://api.icanboogie.org/storage/2.0/class-ICanBoogie.Storage.StorageCollection.html

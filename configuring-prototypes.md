@@ -39,8 +39,7 @@ $app->configs['prototype'];
 
 
 
-[Core]:          http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Core.html
-[documentation]: http://api.icanboogie.org/bind-prototype/3.0/
+[Application]:           http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Core.html
 
 [icanboogie/icanboogie]: https://github.com/ICanBoogie/ICanBoogie
 [icanboogie/prototype]:  https://github.com/ICanBoogie/Prototype

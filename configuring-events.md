@@ -45,7 +45,7 @@ $app->events;           // obtain an EventCollection instance created with the "
 
 
 
-[Core]:                  http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Core.html
+[Application]:           http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Core.html
 [icanboogie/icanboogie]: https://github.com/ICanBoogie/ICanBoogie
 [icanboogie/event]:      https://github.com/ICanBoogie/Event
 [Autoconfig feature]:    https://github.com/ICanBoogie/ICanBoogie#autoconfig

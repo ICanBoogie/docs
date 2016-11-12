@@ -168,8 +168,8 @@ The following helpers are defined:
 # Bindings
 
 The [icanboogie/bind-render][] package binds [icanboogie/render][] to [ICanBoogie][], using its
-autoconfig feature. It adds various getters and methods to the [Core][] instance and a template
-resolver that uses the application paths to look for templates.
+autoconfig feature. It adds various getters and methods to the [Application][] instance and a
+template resolver that uses the application paths to look for templates.
 
 ```php
 <?php
@@ -202,7 +202,7 @@ Also, the "//" prefix can be used to search for templates from these paths .e.g.
 
 
 [ApplicationTemplateResolver]: http://api.icanboogie.org/bind-render/0.5/class-ICanBoogie.Binding.Render.ApplicationTemplateResolver.html
-[Core]:                        http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Core.html
+[Application]:                 http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Core.html
 [ModuleTemplateResolver]:      http://api.icanboogie.org/module/2.3/class-ICanBoogie.Module.ModuleTemplateResolver.html
 [BasicTemplateResolver]:       http://api.icanboogie.org/render/0.5/class-ICanBoogie.Render.BasicTemplateResolver.html
 [EngineCollection\AlterEvent]: http://api.icanboogie.org/render/0.6/class-ICanBoogie.Render.EngineCollection.AlterEvent.html

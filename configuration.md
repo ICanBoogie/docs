@@ -10,10 +10,10 @@ _Autoconfig_ feature, and won't require much of you other than a line in the
 
 
 
-## Configuring the _core_
+## Configuring the application
 
-The [Core][] instance is configured with _core_ configuration fragments. The fragment used by your
-application is usually located in the `/app/all/config/core.php` file.
+The [Application][] instance is configured with `app` configuration fragments. The fragment used by
+your application is usually located in the `/app/all/config/app.php` file.
 
 The following example demonstrates how to enable configs caching and how to specify the name
 of the session and its scope.
@@ -21,7 +21,7 @@ of the session and its scope.
 ```php
 <?php
 
-// protected/all/config/core.php
+// protected/all/config/app.php
 
 return [
 
@@ -37,7 +37,7 @@ return [
 ];
 ```
 
-> **Note:** Check ICanBoogie's `config/core.php` for a list of available options and their default values.
+> **Note:** Check ICanBoogie's `config/app.php` for a list of available options and their default values.
 
 
 
@@ -70,9 +70,9 @@ A storage engine for variables may be specified with the
 
 
 [Composer]: http://getcomposer.org/
-[Core]:                http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Core.html
-[APCStorage]:          http://api.icanboogie.org/storage/2.0/class-ICanBoogie.Storage.APCStorage.html
-[FileStorage]:         http://api.icanboogie.org/storage/2.0/class-ICanBoogie.Storage.FileStorage.html
-[Storage]:             http://api.icanboogie.org/storage/2.0/class-ICanBoogie.Storage.Storage.html
-[StorageCollection]:   http://api.icanboogie.org/storage/2.0/class-ICanBoogie.Storage.StorageCollection.html
+[Application]:          http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Core.html
+[APCStorage]:           http://api.icanboogie.org/storage/2.0/class-ICanBoogie.Storage.APCStorage.html
+[FileStorage]:          http://api.icanboogie.org/storage/2.0/class-ICanBoogie.Storage.FileStorage.html
+[Storage]:              http://api.icanboogie.org/storage/2.0/class-ICanBoogie.Storage.Storage.html
+[StorageCollection]:    http://api.icanboogie.org/storage/2.0/class-ICanBoogie.Storage.StorageCollection.html
 [composer-schema.json]: https://github.com/ICanBoogie/ICanBoogie/blob/master/lib/Autoconfig/composer-schema.json

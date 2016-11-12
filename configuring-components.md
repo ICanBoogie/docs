@@ -17,8 +17,8 @@ A configuration fragment is a PHP file returning an array. Multiple fragments ar
 a configuration, or _derived_ configuration. They are usually located in `config` directories and
 are usually named after the config they are used to synthesize.
 
-The following code is an example of a `core` config fragment, which is used to configure the
-core of the application:
+The following code is an example of a `app` config fragment, which is used to configure the core of
+the application:
 
 ```php
 <?php
@@ -63,7 +63,7 @@ use function ICanBoogie\array_merge_recursive;
 
 /* @var $config \ICanBoogie\Config */
 
-$core_config = $config->synthesize('core', function(array $fragments) {
+$app_config = $config->synthesize('app', function(array $fragments) {
 
 	return array_merge_recursive(...$fragments);
 
@@ -87,7 +87,7 @@ use function ICanBoogie\array_merge_recursive;
 
 /* @var $config \ICanBoogie\Config */
 
-$core_config = $config->synthesize('core', function(array $fragments) {
+$app_config = $config->synthesize('app', function(array $fragments) {
 
 	return array_merge_recursive(...$fragments);
 
@@ -99,7 +99,7 @@ $core_config = $config->synthesize('core', function(array $fragments) {
 
 /* @var $config \ICanBoogie\Config */
 
-$core_config = $config->synthesize('core', 'merge recursive');
+$app_config = $config->synthesize('app', 'merge recursive');
 ```
 
 
@@ -118,9 +118,9 @@ use ICanBoogie\Config;
 
 /* @var array $paths */
 
-$synthesizers = [ 'core' => 'merge recursive' ];
+$synthesizers = [ 'app' => 'merge recursive' ];
 $config = new Config($paths, $synthesizers);
-$core_config = $config['core'];
+$app_config = $config['app'];
 ```
 
 

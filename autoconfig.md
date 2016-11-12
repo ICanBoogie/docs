@@ -61,7 +61,7 @@ paths respectively.
 
 namespace ICanBoogie;
 
-$app = new Core(get_autoconfig());
+$app = boot(get_autoconfig());
 ```
 
 Additionally, the `ICanBoogie\AUTOCONFIG_PATHNAME` constant defines the absolute pathname to the
@@ -95,5 +95,5 @@ the `get_autoconfig()` function returns it. For instance, ICanBoogie uses this f
 
 
 [Composer]:             http://getcomposer.org/
-[Core]:                 http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Core.html
+[Application]:          http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Core.html
 [composer-schema.json]: https://github.com/ICanBoogie/ICanBoogie/blob/master/lib/Autoconfig/composer-schema.json
