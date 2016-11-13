@@ -515,12 +515,65 @@ foreach (EventProfiler::$calls as list($time, $type, $hook, $started_at))
 
 
 
+## Bindings
+
+The [icanboogie/bind-event][] package binds [icanboogie/event][] to ICanBoogie, using its
+Autoconfig feature. It provides a config synthesizer for event hooks defined in `event`
+configuration fragments, and an `events` getter for [Application][] instances.
+
+```php
+<?php
+
+namespace ICanBoogie;
+
+require 'vendor/autoload.php';
+
+$app = boot();
+
+$app->configs['event']; // obtain the "event" config.
+$app->events;           // obtain an EventCollection instance created with the "event" config.
+```
+
+
+
+
+
+### Attaching event hooks using the `event` config
+
+The `event` config can be used to define event hooks.
+
+The following example demonstrates how an application can attach event hooks to be notified when
+nodes are saved (or nodes subclasses), and when an authentication exception is thrown during the
+dispatch of a request.
+
+```php
+<?php
+
+// config/event.php
+
+namespace App;
+
+$hooks = Hooks::class . '::';
+
+return [
+
+	\App\Modules\Articles\SaveOperation::class . '::process' => $hooks . 'on_articles_save',
+	\ICanBoogie\HTTP\AuthenticationRequired::class . '::rescue' => $hooks . 'on_authentication_required_rescue'
+
+];
+```
+
+
+
+
+
 [Event]:                 http://api.icanboogie.org/event/3.0/class-ICanBoogie.Event.html
 [EventHook]:             http://api.icanboogie.org/event/3.0/class-ICanBoogie.EventHook.html
 [EventProfiler]:         http://api.icanboogie.org/event/3.0/class-ICanBoogie.EventProfiler.html
 [EventReflection]:       http://api.icanboogie.org/event/3.0/class-ICanBoogie.EventReflection.html
 [EventCollection]:       http://api.icanboogie.org/event/3.0/class-ICanBoogie.EventCollection.html
 [`get_events()`]:        http://api.icanboogie.org/event/3.0/function-ICanBoogie.get_events.html
+[Application]:           http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Core.html
 [icanboogie/event]:      https://github.com/ICanBoogie/Event
 [icanboogie/bind-event]: https://github.com/ICanBoogie/bind-event
 [ICanBoogie]:            https://github.com/ICanBoogie/ICanBoogie

@@ -292,19 +292,6 @@ $custom_request = Request::from([
 
 
 
-## Events
-
-### Cache must be cleared
-
-The `clear_cache` event of class [ClearCacheEvent][] is fired when the various caches of the
-application must be cleared. Event hooks may use this event to clear their own cache. For instance,
-ICanBoogie clears its configurations cache when this event is fired. 
-
-
-
-
-
-
 ## Prototype methods
 
 ### `ICanBoogie\Prototyped::get_app`
@@ -354,7 +341,6 @@ $app === $o->app;
 [TimeZone]:                   http://api.icanboogie.org/datetime/2.0/class-ICanBoogie.TimeZone.html
 [Request]:                    http://api.icanboogie.org/http/3.0/class-ICanBoogie.HTTP.Request.html
 [BootEvent]:                  http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Application.BootEvent.html
-[ClearCacheEvent]:            http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Application.ClearCacheEvent.html
 [ConfigureEvent]:             http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Application.ConfigureEvent.html
 [Application]:                http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Core.html
 [ApplicationNotInstantiated]: http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.ApplicationNotInstantiated.html

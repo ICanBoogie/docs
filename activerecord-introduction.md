@@ -17,10 +17,116 @@ hundreds of them.
 
 
 
+## Bindings
+
+The [icanboogie/bind-activerecord][] package binds the [icanboogie/activerecord][] package to
+ICanBoogie, using its _Autoconfig_ feature. It provides configuration synthesizers for connections
+and models, as well as getters for connection collection and model collection. A model provider
+is also declared:
+
+```php
+<?php
+namespace ICanBoogie;
+
+$app = boot();
+
+$connections_config = $app->configs['activerecord_connections'];
+$models_config = $app->configs['activerecord_models'];
+
+echo get_class($app->connections);               // ICanBoogie\ActiveRecord\ConnectionCollection
+echo get_class($app->models);                    // ICanBoogie\ActiveRecord\ModelCollection
+
+$primary_connection = $app->connections['primary'];
+$primary_connection === $app->db;                // true
+
+get_models('nodes') === $app->models['nodes'];   // true
+```
+
+
+
+
+
+### Autoconfig
+
+ICanBoogie's _Autoconfig_ is used to provide the following features:
+
+- A synthesizer for the `activerecord_connections` config, created from
+the `activerecord#connections` fragments.
+- A synthesizer for the `activerecord_models` config, created from
+the `activerecord#models` fragments.
+- A lazy getter for the `ICanBoogie\Application::$connections` property, that returns
+a [ConnectionCollection][] instance created with the `activerecord_connections` config.
+- A lazy getter for the `ICanBoogie\Application::$models` property, that returns
+a [ModelCollection][] instance created with the `activerecord_models` config.
+- A lazy getter for the `ICanBoogie\Application::$db` property, that returns the connection named
+`primary` from the `ICanBoogie\Application::$connections` property.
+
+
+
+
+
+### The `activerecord` config fragment
+
+Currently `activerecord` fragments are used to synthesize `activerecord_connections` and
+`activerecord_models` configurations, which are suitable to create [ConnectionCollection][] and
+[ModelCollection][] instances.
+
+The following example demonstrates how to define connections and models. Two connections
+are defined: `primary` is a connection to the MySQL server;`cache` is a connection to a SQLite
+database. The `nodes` model is also defined.
+
+```php
+<?php
+
+// config/activerecord.php
+
+use ICanBoogie\ActiveRecord\ConnectionOptions;
+use ICanBoogie\ActiveRecord\Model;
+
+return [
+
+	'connections' => [
+
+		'primary' => [
+
+			'dsn' => 'mysql:dbname=mydatabase',
+			'username' => 'root',
+			'password' => 'root',
+			'options' => [
+
+				ConnectionOptions::TIMEZONE => '+02:00',
+				ConnectionOptions::TABLE_NAME_PREFIX => 'myprefix'
+
+			]
+		],
+
+		'cache' => 'sqlite:' . ICanBoogie\REPOSITORY . 'cache.sqlite'
+
+	],
+
+	'models' => [
+
+		'nodes' => [
+
+			Model::SCHEMA => [
+
+				'id' => 'serial',
+				'title' => 'varchar'
+
+			]
+		]
+	]
+];
+```
+
+
+
+
+
 ## Exceptions
 
-The exception classes defined by the package implement the `ICanBoogie\ActiveRecord\Exception`
-interface so that they can easily be identified:
+ActiveRecord exceptions implement the `ICanBoogie\ActiveRecord\Exception` interface so that they can
+easily be identified:
 
 ```php
 <?php
@@ -71,3 +177,7 @@ already instantiated model.
 [StatementInvocationFailed]:    http://api.icanboogie.org/activerecord/4.0/class-ICanBoogie.ActiveRecord.StatementInvocationFailed.html
 [StatementNotValid]:            http://api.icanboogie.org/activerecord/4.0/class-ICanBoogie.ActiveRecord.StatementNotValid.html
 [UnableToSetFetchMode]:         http://api.icanboogie.org/activerecord/4.0/class-ICanBoogie.ActiveRecord.UnableToSetFetchMode.html
+[ConnectionCollection]:         http://api.icanboogie.org/activerecord/4.0/class-ICanBoogie.ActiveRecord.ConnectionCollection.html
+[ModelCollection]:              http://api.icanboogie.org/activerecord/4.0/class-ICanBoogie.ActiveRecord.ModelCollection.html
+[icanboogie/activerecord]:      https://github.com/ICanBoogie/activerecord
+[icanboogie/bind-activerecord]: https://github.com/ICanBoogie/bind-activerecord

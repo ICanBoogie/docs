@@ -1,10 +1,14 @@
+- Foreword
+	- [Introduction](icanboogie.md)
+	- [The Application class](the-application-class.md)
+	- [Life & Death](life-and-death.md)
+	- [Autoconfig](autoconfig.md)
+	- [Multi-Site support](multi-site.md)
+	- [Bindings](bindings)
 - Getting Started
 	- [Installation](installation.md)
 	- [Configuration](configuration.md)
-	- [Multi-Site support](multi-site.md)
-- Core Concepts
-	- [Introduction](icanboogie.md)
-	- [Autoconfig](autoconfig.md)
+- Core components
 	- [Events](events.md)
 	- [Prototypes](prototypes.md)
 - Configuration

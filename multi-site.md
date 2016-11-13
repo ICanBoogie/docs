@@ -5,10 +5,10 @@ environments. Even if you are dealing with only one domain, this feature can be 
 different configuration for the _dev_, _staging_, and _production_ versions of a same application.
 
 The intended location for your custom application code is in a separate `app` directory, but another
-directory can be defined with the `app-root` _autoconfig_ directive, which is relative to the `root`
+directory can be defined with the `app-root` autoconfig directive, which is relative to the `root`
 directive.
 
-ICanBoogie searches for `config` directories to add to the _autoconfig_. Packages may alter the
+ICanBoogie searches for `config` directories to add to the autoconfig. Packages may alter the
 _autoconfig_ as well. For instance, [icanboogie/module][] searches for `modules` directories.
 
 
@@ -21,7 +21,7 @@ The instance name of the application is used to resolve the application paths. I
 defined by the `ICANBOOGIE_INSTANCE` environment variable but can be retrieved from `PHP_SAPI` or
 `$_SERVER`.
 
-If the variable is not defined, the instance name defaults as follows:
+If the environment variable is not defined, the instance name defaults as follows:
 
 - The application runs from the CLI (e.g. `PHP_SAPI` == "cli"), "cli" is used as instance name.
 - `$_SERVER['SERVER_NAME']` is defined, it is used as instance name.
@@ -44,14 +44,13 @@ org
 ```
 
 The directory `all` contains resources that are common to all instances. It is always added if
-present. The directory `default` is only added if there no directory matches the instance name.
+present. The directory `default` is only added if no directory matches the instance name.
 
 To resolve the matching directory, the instance name is first broken into parts and the most
-specific ones are removed until a corresponding directory is found. For instance, given the
-server name `www.icanboogie.dev`, the following directories are tried:
-`www.icanboogie.dev`, `icanboogie.dev`, and finally `dev`.
-
-If the instance name cannot be resolved into a directory, `default` is used instead.
+specific ones are removed until a corresponding directory is found. For instance, given the server
+name `www.icanboogie.dev`, the following directories are tried: `www.icanboogie.dev`,
+`icanboogie.dev`, and finally `dev`. If the instance name cannot be resolved into a directory,
+`default` is used instead.
 
 
 

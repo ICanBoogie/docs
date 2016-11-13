@@ -3,7 +3,7 @@
 ICanBoogie and its components are usually very configurable and come with sensible defaults and a
 few conventions. Configurations are usually located in `config` folders, while locale messages are
 usually located in `locale` folders. Components configure themselves thanks to ICanBoogie's
-_Autoconfig_ feature, and won't require much of you other than a line in the
+[Autoconfig][] feature, and won't require much of you other than a line in the
 `composer.json` file of your application.
 
 
@@ -21,6 +21,8 @@ of the session and its scope.
 ```php
 <?php
 
+namespace ICanBoogie;
+
 // protected/all/config/app.php
 
 return [
@@ -29,15 +31,19 @@ return [
 
 	'session' => [
 
-		'name' => "ICanBoogie",
-		'domain' => ".example.org"
+		SessionOptions::OPTION_NAME => "ICanBoogie",
+		SessionOptions::OPTION_COOKIE_PARAMS => [
+
+			Session\CookieParams::OPTION_DOMAIN => ".example.org"
+
+		]
 
 	]
 
 ];
 ```
 
-> **Note:** Check ICanBoogie's `config/app.php` for a list of available options and their default values.
+> **Note:** Check ICanBoogie's [`config/app.php`][] for a list of available options and their default values.
 
 
 
@@ -70,9 +76,11 @@ A storage engine for variables may be specified with the
 
 
 [Composer]: http://getcomposer.org/
-[Application]:          http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Core.html
+[Application]:          /docs/4.0/the-application-class
+[Autoconfig]:           /docs/4.0/autoconfig
 [APCStorage]:           http://api.icanboogie.org/storage/2.0/class-ICanBoogie.Storage.APCStorage.html
 [FileStorage]:          http://api.icanboogie.org/storage/2.0/class-ICanBoogie.Storage.FileStorage.html
 [Storage]:              http://api.icanboogie.org/storage/2.0/class-ICanBoogie.Storage.Storage.html
 [StorageCollection]:    http://api.icanboogie.org/storage/2.0/class-ICanBoogie.Storage.StorageCollection.html
 [composer-schema.json]: https://github.com/ICanBoogie/ICanBoogie/blob/master/lib/Autoconfig/composer-schema.json
+[`config/app.php`]:     https://github.com/ICanBoogie/ICanBoogie/blob/4.0/config/app.php

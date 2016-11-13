@@ -224,6 +224,20 @@ $config = new Config($paths, $synthesizers, $cache);
 
 
 
+## Events
+
+### Cache must be cleared
+
+The `clear_cache` event of class [ClearCacheEvent][] is fired when the various caches of the
+application must be cleared. Event hooks may use this event to clear their own cache. For instance,
+ICanBoogie clears its configurations cache when this event is fired. 
+
+
+
+
+
+
 [icanboogie/bind-activerecord]: https://github.com/ICanBoogie/bind-activerecord
 [Config]:                       http://api.icanboogie.org/config/1.1/class-ICanBoogie.Config.html
+[ClearCacheEvent]:              http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Application.ClearCacheEvent.html
 [Storage]:                      http://api.icanboogie.org/storage/2.0/class-ICanBoogie.Storage.Storage.html
