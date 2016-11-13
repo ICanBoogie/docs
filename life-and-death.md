@@ -89,7 +89,7 @@ may use this event to cleanup loose ends.
 [ConfigureEvent]:      http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Application.ConfigureEvent.html
 [RunEvent]:            http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Application.RunEvent.html
 [TerminateEvent]:      http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Application.TerminateEvent.html
-[Application]:         /docs/4.0/the-application-class
-[Autoconfig]:          /docs/4.0/autoconfig
-[autoconfig]:          /docs/4.0/autoconfig
+[Application]:         ./the-application-class.md
+[Autoconfig]:          ./autoconfig.md
+[autoconfig]:          ./autoconfig.md
 [Composer]:            https://getcomposer.org/

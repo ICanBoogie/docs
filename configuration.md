@@ -76,8 +76,8 @@ A storage engine for variables may be specified with the
 
 
 [Composer]: http://getcomposer.org/
-[Application]:          /docs/4.0/the-application-class
-[Autoconfig]:           /docs/4.0/autoconfig
+[Application]:          ./the-application-class.md
+[Autoconfig]:           ./autoconfig.md
 [APCStorage]:           http://api.icanboogie.org/storage/2.0/class-ICanBoogie.Storage.APCStorage.html
 [FileStorage]:          http://api.icanboogie.org/storage/2.0/class-ICanBoogie.Storage.FileStorage.html
 [Storage]:              http://api.icanboogie.org/storage/2.0/class-ICanBoogie.Storage.Storage.html

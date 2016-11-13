@@ -59,7 +59,7 @@ The framework includes the following bindings, but [more are available](https://
 
 
 
-[Application]:                  /docs/4.0/the-application-class
+[Application]:                  ./the-application-class.md
 [PrototypeTrait]:               http://api.icanboogie.org/prototype/3.0/class-ICanBoogie.PrototypeTrait.html
 [icanboogie/bind-event]:        https://github.com/ICanBoogie/bind-event
 [icanboogie/bind-prototype]:    https://github.com/ICanBoogie/bind-prototype
