@@ -1,21 +1,27 @@
 # Bindings
 
-Almost all ICanBoogie packages can be used without involving the framework, but special packages
-usually containing configuration files and additional classes make it very easy to use them with it.
-These special packages are called _bindings_ and are usually prefixed with `bind-`. e.g.
-[icanboogie/bind-routing][].
+Almost all [ICanBoogie packages][] can be used on their own, without involving the framework, but
+special packages, usually containing configuration files and additional classes, make them very easy
+to use with it. These special packages are called _bindings_ and are prefixed with `bind-`. For
+instance, [icanboogie/bind-routing][] binds [icanboogie/routing][] to ICanBoogie.
 
-More over, the [icanboogie/prototype][] package allows methods of classes using the
-[PrototypeTrait][] to be defined at runtime, which includes getters and setters. This unique feature
-is used throughout the framework to reverse control over dependencies and maximize lazy loading. The
-[Application][] instance has the most _bindings_, but is not the only one; the feature is also used
-to bind views to controllers, or active record cache to models.
+It's not unusual for these packages to add methods and getters/setters to classes through
+[the prototype system][]. The [Application][] instance usually gets the most _bindings_, but is not
+the only one; as views are bound to controllers, and active record cache to models. For instance,
+the [icanboogie/bind-routing][] package adds the `url_for()` method and the `routes` getter to the
+[Application][] instance:
 
-Packages defining these prototype methods always provide corresponding _binding trait_ that helps
-type hinting. For instance, the [icanboogie/bind-routing][] package adds the `routes` getter and the
-`url_for()` method to the [Application][] instance.
+```php
+<?php
 
-The binding trait looks something like this:
+/* @var $app \ICanBoogie\Application */
+
+$app->url_for('articles:index');
+$app->routes->get('/articles', ArticleController::class);
+```
+
+These packages always provide corresponding _binding traits_ to help type hinting. The binding
+trait from the routing package looks something like this:
 
 ```php
 <?php
@@ -25,7 +31,7 @@ namespace ICanBoogie\Binding\Routing;
 use ICanBoogie\Routing\RouteCollection;
 
 /**
- * @method string url_for($route_or_route_id, $values = null) Returns the contextualized URL of a route.
+ * @method string url_for($route_or_route_id, $values = null)
  *
  * @property RouteCollection $routes
  */
@@ -48,11 +54,11 @@ class Application extends Core
 }
 ```
 
-The framework includes the following bindings, but [more are available](https://github.com/ICanBoogie?utf8=%E2%9C%93&query=bind-):
+The framework includes the following bindings, but [more are available](https://github.com/ICanBoogie?utf8=%E2%9C%93&q=bind-&type=&language=#org-repositories):
 
-- [icanboogie/bind-prototype][]
 - [icanboogie/bind-event][]
 - [icanboogie/bind-http][]
+- [icanboogie/bind-prototype][]
 - [icanboogie/bind-routing][]
 
 
@@ -98,11 +104,14 @@ $app === $prototyped->app;
 
 
 [Application]:                  the-application-class.md
-[PrototypeTrait]:               https://api.icanboogie.org/prototype/3.0/class-ICanBoogie.PrototypeTrait.html
+[the prototype system]:         prototypes.md
 [icanboogie/bind-event]:        https://github.com/ICanBoogie/bind-event
 [icanboogie/bind-prototype]:    https://github.com/ICanBoogie/bind-prototype
 [icanboogie/bind-http]:         https://github.com/ICanBoogie/bind-http
 [icanboogie/bind-routing]:      https://github.com/ICanBoogie/bind-routing
+[icanboogie/routing]:           https://github.com/ICanBoogie/routing
 [icanboogie/prototype]:         https://github.com/ICanBoogie/Prototype
 [PrototypedBindings]:           https://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Binding.PrototypedBindings.html
-[Prototyped]:                   https://api.icanboogie.org/prototype/2.3/class-ICanBoogie.Prototyped.html
+[Prototyped]:                   https://api.icanboogie.org/prototype/3.0/class-ICanBoogie.Prototyped.html
+[PrototypeTrait]:               https://api.icanboogie.org/prototype/3.0/class-ICanBoogie.PrototypeTrait.html
+[ICanBoogie packages]:          https://packagist.org/packages/icanboogie/
