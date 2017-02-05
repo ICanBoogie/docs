@@ -23,13 +23,12 @@ of the session and its scope.
 
 namespace ICanBoogie;
 
-// protected/all/config/app.php
+// app/all/config/app.php
 
 return [
 
-	'cache configs' => true,
-
-	'session' => [
+	AppConfig::CACHE_CONFIGS => true,
+	AppConfig::SESSION => [
 
 		SessionOptions::OPTION_NAME => "ICanBoogie",
 		SessionOptions::OPTION_COOKIE_PARAMS => [
@@ -76,8 +75,8 @@ A storage engine for variables may be specified with the
 
 
 [Composer]: http://getcomposer.org/
-[Application]:          ./the-application-class.md
-[Autoconfig]:           ./autoconfig.md
+[Application]:          the-application-class.md
+[Autoconfig]:           autoconfig.md
 [APCStorage]:           http://api.icanboogie.org/storage/2.0/class-ICanBoogie.Storage.APCStorage.html
 [FileStorage]:          http://api.icanboogie.org/storage/2.0/class-ICanBoogie.Storage.FileStorage.html
 [Storage]:              http://api.icanboogie.org/storage/2.0/class-ICanBoogie.Storage.Storage.html

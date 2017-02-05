@@ -26,7 +26,7 @@ dispatcher if you want to.
 ICanBoogie and its components are usually very configurable and come with sensible defaults and a
 few conventions. Configurations are usually located in "config" folders, while locale messages are
 usually located in "locale" folders. Components configure themselves thanks to ICanBoogie's
-_Autoconfig_ feature, and won't require much of you other than a line in your
+[Autoconfig][] feature, and won't require much of you other than a line in your
 `composer.json` file.
 
 
@@ -65,8 +65,8 @@ echo $time;         // 2013-05-17T14:30:45Z
 
 The getter/setter feature provided by [icanboogie/accessor][], and extended by
 [icanboogie/prototype][], allows you to create read-only or write-only properties, façades
-properties, fallbacks to generate default values. Getters are setters are also often used to control
-type, lazy load resources, and inversion of control.
+properties, fallbacks to generate default values. Getters and setters are also often used to control
+type, lazy load resources, and inverse control.
 
 
 
@@ -76,7 +76,7 @@ type, lazy load resources, and inversion of control.
 
 [icanboogie/prototype][] allows methods to be defined at runtime, and since getters and setters are
 methods as well, this feature in often used as a mean to reverse control to provide dependencies.
-What's great about it is that dependencies are only provided when they are required, not when to
+What's great about it is that dependencies are only provided when they are required, not when the
 instance is created.
 
 The following example demonstrates how a shared database connection is obtained through a `db`
@@ -292,37 +292,6 @@ $custom_request = Request::from([
 
 
 
-## Prototype methods
-
-### `ICanBoogie\Prototyped::get_app`
-
-The `app` magic property of [Prototyped][] instances returns the instance of the application. The
-property is read-only and is only available after the [Application][] instance has been created.
-
-The [PrototypedBindings][] trait may be used to type hint instances.
-
-```php
-<?php
-
-namespace ICanBoogie;
-
-use ICanBoogie\Binding\PrototypedBindings;
-
-/* @var $o Prototyped|PrototypedBindings */
-
-$o = new Prototyped;
-$o->app;
-// throw ICanBoogie\PropertyNotDefined;
-
-$app = boot();
-$app === $o->app;
-// true
-```
-
-
-
-
-
 [icanboogie/accessor]:          https://github.com/ICanBoogie/Accessor
 [icanboogie/bind-activerecord]: https://github.com/ICanBoogie/bind-activerecord
 [icanboogie/bind-cldr]:         https://github.com/ICanBoogie/bind-cldr
@@ -344,7 +313,6 @@ $app === $o->app;
 [ConfigureEvent]:             http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Application.ConfigureEvent.html
 [Application]:                http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Core.html
 [ApplicationNotInstantiated]: http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.ApplicationNotInstantiated.html
-[PrototypedBindings]:         http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Binding.PrototypedBindings.html
 [RunEvent]:                   http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Application.RunEvent.html
 [TerminateEvent]:             http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Application.TerminateEvent.html
 [Prototyped]:                 http://api.icanboogie.org/prototype/2.3/class-ICanBoogie.Prototyped.html
@@ -352,3 +320,5 @@ $app === $o->app;
 [FileStorage]:                http://api.icanboogie.org/storage/2.0/class-ICanBoogie.Storage.FileStorage.html
 [Storage]:                    http://api.icanboogie.org/storage/2.0/class-ICanBoogie.Storage.Storage.html
 [StorageCollection]:          http://api.icanboogie.org/storage/2.0/class-ICanBoogie.Storage.StorageCollection.html
+
+[Autoconfig]:                 ./autoconfig.md

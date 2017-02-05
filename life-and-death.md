@@ -14,9 +14,9 @@ $app = boot();
 $app();
 ```
 
-1\. Pretty common for applications using [Composer][], the auto-loader if the first thing to run.
+1\. Pretty common for applications using [Composer][], the auto-loader is the first thing to run.
 
-2\. Then `boot()` helper to instantiate the application with its [Application][] class and
+2\. The `boot()` helper instantiates the application with its [Application][] class and
 [autoconfig][]. After the application has booted, the `ICanBoogie\Application::boot` event is fired.
 At this point ICanBoogie and its low-level components are configured and booted, the application is
 ready to process requests.
@@ -85,11 +85,22 @@ may use this event to cleanup loose ends.
 
 
 
+### Cache must be cleared
+
+The `clear_cache` event of class [ClearCacheEvent][] is fired when the various caches of the
+application must be cleared. Event hooks may use this event to clear their own cache. For instance,
+ICanBoogie clears its configurations cache when this event is fired. 
+
+
+
+
+
 [BootEvent]:           http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Application.BootEvent.html
 [ConfigureEvent]:      http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Application.ConfigureEvent.html
+[ClearCacheEvent]:     http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Application.ClearCacheEvent.html
 [RunEvent]:            http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Application.RunEvent.html
 [TerminateEvent]:      http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Application.TerminateEvent.html
-[Application]:         ./the-application-class.md
-[Autoconfig]:          ./autoconfig.md
-[autoconfig]:          ./autoconfig.md
+[Application]:         the-application-class.md
+[Autoconfig]:          autoconfig.md
+[autoconfig]:          autoconfig.md
 [Composer]:            https://getcomposer.org/

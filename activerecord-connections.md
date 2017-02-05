@@ -1,6 +1,6 @@
 # ActiveRecord connections
 
-ActiveRecord connections (or database connections) are manage by a [ConnectionCollection][]
+ActiveRecord connections (or database connections) are managed by a [ConnectionCollection][]
 instance. Because the class implements [ArrayAccess][], instances are used like arrays.
 
 

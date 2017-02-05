@@ -21,9 +21,6 @@ to your application.
 
 namespace ICanBoogie;
 
-/**
- * @property-read array $contents
- */
 class Application extends Core
 {
 	use Binding\Render\ApplicationBindings;

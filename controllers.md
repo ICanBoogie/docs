@@ -105,15 +105,6 @@ return [
 	'contact' => [
 
 		RouteDefinition::PATTERN => '/contact',
-		RouteDefinition::CONTROLLER => AppController::class . '#contact'
-
-	],
-	
-	# or
-	
-	'contact' => [
-
-		RouteDefinition::PATTERN => '/contact',
 		RouteDefinition::CONTROLLER => AppController::class,
 		RouteDefinition::ACTION => 'contact'
 

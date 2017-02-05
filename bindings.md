@@ -59,10 +59,50 @@ The framework includes the following bindings, but [more are available](https://
 
 
 
-[Application]:                  ./the-application-class.md
-[PrototypeTrait]:               http://api.icanboogie.org/prototype/3.0/class-ICanBoogie.PrototypeTrait.html
+## Prototyped bindings
+
+When the application is instantiated it adds the `app` getter to [Prototyped][] instances, which
+allows these instances to obtain the instance of the application.
+
+The following example demonstrates how the application instance can be obtained from a
+[Prototyped][] instance. The [PrototypedBindings][] trait may be used to type hint these instances:
+
+```php
+<?php
+
+namespace ICanBoogie;
+
+use ICanBoogie\Binding\PrototypedBindings;
+
+/* @var $app Application */
+/* @var $prototyped Prototyped|PrototypedBindings */
+
+$prototyped = new Prototyped;
+
+try
+{
+	$prototyped->app;
+}
+catch (PropertyNotDefined $e)
+{
+	// `app` is not defined yet
+}
+
+$app = boot();
+$app === $prototyped->app;
+// true
+```
+
+
+
+
+
+[Application]:                  the-application-class.md
+[PrototypeTrait]:               https://api.icanboogie.org/prototype/3.0/class-ICanBoogie.PrototypeTrait.html
 [icanboogie/bind-event]:        https://github.com/ICanBoogie/bind-event
 [icanboogie/bind-prototype]:    https://github.com/ICanBoogie/bind-prototype
 [icanboogie/bind-http]:         https://github.com/ICanBoogie/bind-http
 [icanboogie/bind-routing]:      https://github.com/ICanBoogie/bind-routing
 [icanboogie/prototype]:         https://github.com/ICanBoogie/Prototype
+[PrototypedBindings]:           https://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Binding.PrototypedBindings.html
+[Prototyped]:                   https://api.icanboogie.org/prototype/2.3/class-ICanBoogie.Prototyped.html
