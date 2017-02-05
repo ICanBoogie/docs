@@ -32,10 +32,7 @@ be declared in the _root_ package of the application:
 
 The autoconfig is obtained using the `get_autoconfig()` function. The function also updates the
 `app-root` and `app-paths` values with the resolved application root and the resolved application
-paths respectively. Of course, the autoconfig can be used _as is_ to instantiate the application.
-Additionally, the `ICanBoogie\AUTOCONFIG_PATHNAME` constant defines the absolute pathname to the
-autoconfig file.
- 
+paths respectively. Of course, the autoconfig can be used _as is_ to instantiate the application:
 
 ```php
 <?php
@@ -44,6 +41,9 @@ namespace ICanBoogie;
 
 $app = boot(get_autoconfig());
 ```
+
+Additionally, the `ICanBoogie\AUTOCONFIG_PATHNAME` constant defines the absolute pathname to the
+autoconfig file.
 
 > **Note:** A fatal error is triggered if the autoconfig file does not exists, which might happen if
 the `post-autoload-dump` hook is missing from the `composer.json` file of the application.
@@ -54,9 +54,9 @@ the `post-autoload-dump` hook is missing from the `composer.json` file of the ap
 
 ## Altering the autoconfig at runtime
 
-Filters defined with the `autoconfig-filters` key are invoked to alter the autoconfig before
-it is returned by the `get_autoconfig()` helper. For instance, ICanBoogie uses this feature to add
-`config` directories found in the application paths (using the multi-site support).
+Filters defined with `autoconfig-filters` are invoked to alter the autoconfig before it is returned
+by the `get_autoconfig()` helper. For instance, ICanBoogie uses this feature to add `config`
+directories found in the application paths (using the [multi-site support][]).
 
 ```json
 {
@@ -96,6 +96,6 @@ locale messages.
 
 
 
-[Composer]:             http://getcomposer.org/
-[Application]:          http://api.icanboogie.org/icanboogie/4.0/class-ICanBoogie.Core.html
+[multi-site support]:   ./multi-site.md
+[Composer]:             https://getcomposer.org/
 [composer-schema.json]: https://github.com/ICanBoogie/ICanBoogie/blob/master/lib/Autoconfig/composer-schema.json
